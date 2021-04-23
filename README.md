@@ -1,27 +1,65 @@
-# ModelCms
+# Model CMS
+![](https://img.shields.io/github/package-json/v/LvFarias/model-cms/master?style=flat-square)
+![](https://img.shields.io/github/license/LvFarias/model-cms?style=flat-square)
+![](https://img.shields.io/github/repo-size/LvFarias/model-cms?style=flat-square)
+![](https://img.shields.io/github/issues/LvFarias/model-cms?style=flat-square)
+![](https://img.shields.io/github/issues-closed-raw/LvFarias/model-cms?style=flat-square)
+![](https://img.shields.io/github/issues-pr/LvFarias/model-cms?style=flat-square)
+![](https://img.shields.io/github/contributors/LvFarias/model-cms?style=flat-square)
+![](https://img.shields.io/github/commit-activity/m/LvFarias/model-cms?style=flat-square)
+![](https://img.shields.io/github/last-commit/LvFarias/model-cms/master?style=flat-square)
+![](https://img.shields.io/github/forks/LvFarias/model-cms?style=social)
+![](https://img.shields.io/github/stars/LvFarias/model-cms?style=social)
+![](https://img.shields.io/github/watchers/LvFarias/model-cms?style=social)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.13.
+## Sumary
 
-## Development server
+- [Description](#description)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Run](#run)
+  - [In Local with Local-API](#in-local-with-local-api)
+  - [In Local with no Local-API](#in-local-with-no-local-api)
+- [Build](#build)
+  - [For Production](#for-production)
+- [Authors](#authors)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Description
 
-## Code scaffolding
+Template for basic CMS to management sites with Universal Angular with basic API calls.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Prerequisites
+
+- npm `npm i -g npm`
+- Angular CLI `npm i -g @angular/cli`
+
+## Getting Started
+
+```
+npm i
+```
+This command will install everything needed for the project, based on package.json
+
+## Run
+### In Local with Local-API
+
+```
+npm run local
+```
+
+### In Local with no Local-API
+
+```
+npm run local:api
+```
 
 ## Build
+### For Production
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+npm run build:prod
+```
 
-## Running unit tests
+## Authors
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- [Luan Vasco de Farias](https://github.com/LvFarias)

@@ -1,21 +1,40 @@
 {
   "name": "model-cms",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Template for basic CMS to management sites with Universal Angular with basic API calls.",
+  "main": "index.js",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "local": "ng serve",
+    "local:api": "ng serve --configuration=api",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build:prod": "ng build --prod",
+    "postinstall": "npm run build:prod"
   },
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LvFarias/model-cms.git"
+  },
+  "author": "Luan Vasco de Farias <luan.vfarias@gmail.com> (https://github.com/LvFarias/)",
+  "contributors": [
+    "Luan Vasco de Farias <luan.vfarias@gmail.com> (https://github.com/LvFarias/)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LvFarias/model-cms/issues"
+  },
+  "homepage": "https://github.com/LvFarias/model-cms#readme",
+  "keywords": [
+    "model",
+    "model-cms"
+  ],
   "dependencies": {
     "@angular/animations": "~9.1.13",
+    "@angular/cdk": "^9.2.4",
     "@angular/common": "~9.1.13",
     "@angular/compiler": "~9.1.13",
     "@angular/core": "~9.1.13",
     "@angular/forms": "~9.1.13",
+    "@angular/material": "^9.2.4",
     "@angular/platform-browser": "~9.1.13",
     "@angular/platform-browser-dynamic": "~9.1.13",
     "@angular/router": "~9.1.13",

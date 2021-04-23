@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="toggleMenu()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{title}}</span>
+    <span class="toobar-spacer"></span>
+    <button *ngFor="let action of actions" mat-icon-button (click)="action.function()">
+        <mat-icon>{{action.icon}}</mat-icon>
+    </button>
+</mat-toolbar>

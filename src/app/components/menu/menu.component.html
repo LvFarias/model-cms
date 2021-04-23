@@ -1,0 +1,16 @@
+<mat-drawer-container class="cms-container" autosize>
+    <mat-drawer #drawer mode="side" opened>
+        <mat-action-list class="cms-menu">
+            <ng-container *ngFor="let item of items">
+                <button mat-list-item [routerLink]="item.route">
+                    <mat-icon>{{item.icon}}</mat-icon>
+                    {{item.title}}
+                </button>
+                <mat-divider></mat-divider>
+            </ng-container>
+        </mat-action-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <ng-content></ng-content>
+    </mat-drawer-content>
+</mat-drawer-container>
