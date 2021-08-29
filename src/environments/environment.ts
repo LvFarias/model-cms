@@ -1,5 +1,5 @@
 
 export const environment = {
     production: 'false',
-    API_URL: 'http://localhost:63274/',
+    API_URL: 'https://api.whimsinc.com.br/',
 };
