@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SitesService } from 'src/app/services/sites.service';
 
 @Component({
@@ -13,10 +14,6 @@ export class ConfigSitesComponent implements OnInit {
   public list = [];
   public columns = [
     {
-      title: 'Usuario',
-      attr: 'userName',
-      type: 'text',
-    }, {
       title: 'Nome',
       attr: 'name',
       type: 'text',
@@ -31,18 +28,14 @@ export class ConfigSitesComponent implements OnInit {
     }, {
       title: 'Editar',
       attr: 'edit',
-      function: this.editSite,
-      type: 'button',
-    }, {
-      title: 'Remover',
-      attr: 'delete',
-      function: this.removeSite,
+      function: (site: any) => this.editSite(site),
       type: 'button',
     }
   ];
   public displayedColumns = this.columns.map(column => column.attr);
 
   constructor(
+    private router: Router,
     private sitesService: SitesService,
   ) { }
 
@@ -57,12 +50,7 @@ export class ConfigSitesComponent implements OnInit {
     })
   }
 
-  public editSite(user: any) {
-    console.log(user);
+  public editSite(site: any) {
+    this.router.navigateByUrl(`/configs/${site.id}`);
   }
-
-  public removeSite(user: any) {
-    console.log(user);
-  }
-
 }

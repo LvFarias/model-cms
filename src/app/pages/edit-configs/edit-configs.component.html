@@ -1,0 +1,71 @@
+<div class="actions">
+  <button mat-raised-button color="primary" (click)="saveConfigs()">Salvar</button>
+</div>
+<div class="inputs">
+  <mat-form-field>
+    <ngx-mat-file-input [(ngModel)]="configs.file" placeholder="Selecione uma imagem" accept="image/*"
+      (change)="uploadImage(configs.file, configs, 'logo')"></ngx-mat-file-input>
+    <mat-icon matSuffix>folder</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="text-input">
+    <mat-label>Cidade</mat-label>
+    <input matInput name="cidade" [(ngModel)]="configs.city">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="text-input">
+    <mat-label>Estado</mat-label>
+    <input matInput name="estado" [(ngModel)]="configs.state">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="text-input">
+    <mat-label>Telefone</mat-label>
+    <input matInput name="telefone" [(ngModel)]="configs.tel">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="text-input">
+    <mat-label>Informações de Entrega</mat-label>
+    <input matInput name="delivery_info" [(ngModel)]="configs.deliveryInfo">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="text-input">
+    <mat-label>Email</mat-label>
+    <input matInput name="email" [(ngModel)]="configs.email">
+  </mat-form-field>
+  <!-- <div class="agenda">
+    <mat-label>Agenda</mat-label>
+    <ng-container *ngFor="let schedule of configs.schedules; let index=index;">
+      <mat-form-field appearance="fill" class="text-input">
+        <input matInput name="agenda" [(ngModel)]="schedule.text">
+      </mat-form-field>
+      <button mat-button color="warn" (click)="configs.schedules.splice(index, 1)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </ng-container>
+    <div class="add">
+      <button mat-raised-button color="primary"
+        (click)="configs.schedules.push('')">
+        <mat-icon>add</mat-icon> Adicionar Mais um linha
+      </button>
+    </div>
+  </div> -->
+  <div class="socials">
+    <mat-label>Redes Sociais</mat-label>
+    <div class="network" *ngFor="let social of configs.socialList; let index=index;">
+      <mat-form-field appearance="fill" class="select">
+        <mat-label>Redes</mat-label>
+        <mat-select [(ngModel)]="social.network">
+          <mat-option *ngFor="let network of networks" [value]="network">{{network}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="text-input">
+        <mat-label>Link</mat-label>
+        <input matInput name="link" [(ngModel)]="social.link">
+      </mat-form-field>
+      <button mat-button color="warn" (click)="configs.socialList.splice(index, 1)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="add">
+      <button mat-raised-button color="primary"
+        (click)="configs.socialList.push({network:'',link:''})">
+        <mat-icon>add</mat-icon> Adicionar Rede
+      </button>
+    </div>
+  </div>
+</div>

@@ -35,11 +35,6 @@ export class ConfigPagesComponent implements OnInit {
       attr: 'edit',
       function: (page: any) => this.editSite(page),
       type: 'button',
-    }, {
-      title: 'Remover',
-      attr: 'delete',
-      function: (page: any) => this.removeSite(page),
-      type: 'button',
     }
   ];
   public displayedColumns = this.columns.map(column => column.attr);

@@ -7,6 +7,8 @@
     "config": "ts-node set-env.ts",
     "local": "npm run config && ng serve",
     "build": "npm run config && ng build",
+    "build:prod": "npm run config && ng build --prod",
+    "serve": "node dist/www/server/main.js",
     "postinstall": "npm run build"
   },
   "repository": {

@@ -1,0 +1,23 @@
+:host {
+    .actions {
+        padding: 1em;
+        display: flex;
+        text-align: right;
+        justify-content: space-between;
+        .mat-form-field {
+            width: 80%;
+        }
+    }
+    .mat-form-field {
+        width: 100%;
+    }
+    .network {
+        display: flex;
+        padding: 1em 0;
+        align-items: center;
+        .select {
+            width: auto;
+            margin-right: 1em;
+        }
+    }
+}

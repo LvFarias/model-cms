@@ -21,6 +21,10 @@ export class MenuComponent {
       icon: 'dvr',
       route: 'sites',
     }, {
+      title: 'Configs',
+      icon: 'settings',
+      route: 'configs',
+    }, {
       title: 'Pages',
       icon: 'connected_tv',
       route: 'pages',
@@ -41,7 +45,7 @@ export class MenuComponent {
     const user = JSON.parse(this.storage.get('user') || '{}');
     if (user.type !== 'admin') {
       this.items.splice(1, 1);
-      this.items.splice(2, 1);
+      this.items.splice(3, 1);
     }
   }
 

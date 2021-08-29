@@ -12,4 +12,12 @@ export class SitesService {
     public list(page: number, limit = 10): Promise<any> {
         return this.api.get('sites', { page, limit });
     }
+
+    public getConfig(siteId: number): Promise<any> {
+        return this.api.get('config/site/' + siteId);
+    }
+
+    public saveConfigs(siteId: number, configs: any): Promise<any> {
+        return this.api.put('config/site/' + siteId, configs);
+    }
 }

@@ -12,6 +12,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { MaterialModule } from './material.module';
 import { ConfigPagesComponent } from './pages/config-pages/config-pages.component';
 import { ConfigSitesComponent } from './pages/config-sites/config-sites.component';
+import { EditConfigsComponent } from './pages/edit-configs/edit-configs.component';
 import { EditPagesComponent } from './pages/edit-pages/edit-pages.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -32,6 +33,7 @@ export const config: FileInputConfig = {
 const pages = [
   ConfigPagesComponent,
   EditPagesComponent,
+  EditConfigsComponent,
   ConfigSitesComponent,
   HomeComponent,
   LoginComponent,
