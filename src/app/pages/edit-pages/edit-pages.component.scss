@@ -1,0 +1,112 @@
+:host {
+    .actions {
+        padding: 1em;
+        display: flex;
+        text-align: right;
+        justify-content: space-between;
+        .mat-form-field {
+            width: 80%;
+        }
+    }
+    .mat-form-field {
+        width: 100%;
+    }
+    .module-banner {
+        padding: 1em;
+        text-align: center;
+        .preview-devices {
+            display: flex;
+            margin-bottom: 1em;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .edit-image {
+            margin: 0 auto;
+            align-items: center;
+            vertical-align: top;
+            display: inline-flex;
+            flex-direction: column;
+            width: calc(50% - 0.5em);
+        }
+    }
+    .module-text {
+        padding: 1em;
+        .file-image {
+            margin-right: 1em;
+            vertical-align: top;
+            display: inline-flex;
+            width: calc(50% - 0.5em);
+            img {
+                width: 100%;
+            }
+        }
+        .edit-form {
+            align-items: center;
+            vertical-align: top;
+            display: inline-flex;
+            flex-direction: column;
+            width: calc(50% - 0.5em);
+            .subs {
+                display: flex;
+                width: 100%;
+                padding-top: 1.5em;
+                align-items: center;
+                border-top: 2px solid #3f51b5;
+                .inputs {
+                    width: 100%;
+                }
+                &:last-child {
+                    border-bottom: 2px solid #3f51b5;
+                }
+            }
+        }
+    }
+    .module-products, .module-images, .module-posts {
+        .item {
+            padding: 1em;
+            display: flex;
+            padding-bottom: 0;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid black;
+            .image {
+                width: 20%;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        .add {
+            margin-top: 1em;
+        }
+    }
+    .module-images {
+        .item {
+            padding: 1em;
+            .image img {
+                width: 15em;
+                height: 15em;
+                object-fit: cover;
+            }
+        }
+    }
+    .module-posts {
+        .posts {
+            width: 20em;
+            margin-right: 2em;
+            align-self: flex-start;
+            .logo {
+                width: 3em;
+                height: 3em;
+                border: 1px solid;
+                border-radius: 50%;
+                object-fit: contain;
+            }
+            .materia {
+                width: 20em;
+                height: 12em;
+                object-fit: cover;
+            }
+        }
+    }
+}

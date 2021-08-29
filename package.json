@@ -4,11 +4,10 @@
   "description": "Template for basic CMS to management sites with Universal Angular with basic API calls.",
   "main": "index.js",
   "scripts": {
-    "local": "ng serve",
-    "local:api": "ng serve --configuration=api",
-    "build": "ng build",
-    "build:prod": "ng build --prod",
-    "postinstall": "npm run build:prod"
+    "config": "ts-node set-env.ts",
+    "local": "npm run config && ng serve",
+    "build": "npm run config && ng build",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -38,6 +37,7 @@
     "@angular/platform-browser": "~9.1.13",
     "@angular/platform-browser-dynamic": "~9.1.13",
     "@angular/router": "~9.1.13",
+    "ngx-material-file-input": "^2.1.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

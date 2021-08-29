@@ -1,7 +1,9 @@
-import { Injectable, ViewChild } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MenuService {
     public menu!: MatDrawer;
 
@@ -12,7 +14,6 @@ export class MenuService {
     public open() {
         return this.menu.open();
     }
-
 
     public close() {
         return this.menu.close();

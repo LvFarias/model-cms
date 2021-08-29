@@ -1,1 +1,17 @@
-<p>login works!</p>
+<div class="content">
+    <div class="login-box">
+        <form class="inputs" [formGroup]="form">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput type="email">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Senha</mat-label>
+                <input formControlName="password" matInput type="password">
+            </mat-form-field>
+        </form>
+        <div class="actions">
+            <button mat-raised-button color="primary" (click)="login()">Login</button>
+        </div>
+    </div>
+</div>

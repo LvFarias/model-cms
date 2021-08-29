@@ -7,3 +7,8 @@ mat-drawer-content {
     box-sizing: border-box;
     height: calc(100vh - 64px - 2px);
 }
+:host {
+    .mat-icon {
+        margin-right: 0.5em;
+    }
+}

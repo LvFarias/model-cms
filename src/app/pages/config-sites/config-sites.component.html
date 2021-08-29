@@ -1,1 +1,24 @@
-<p>config-sites works!</p>
+<table mat-table [dataSource]="list" class="mat-elevation-z8" [style.width.%]="100">
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column.attr">
+      <th mat-header-cell *matHeaderCellDef>{{column.title}}</th>
+      <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="column.type === 'text'">
+            {{element[column.attr]}}
+          </ng-container>
+          <ng-container *ngIf="column.type === 'date'">
+            {{element[column.attr] | date}}
+          </ng-container>
+          <ng-container *ngIf="column.type === 'link'">
+            <a [href]="'https://'+element[column.attr]" target="_blank">{{element[column.attr]}}</a>
+          </ng-container>
+          <ng-container *ngIf="column.type === 'button' && column.function">
+            <button mat-icon-button color="primary" (click)="column.function(element)">
+                <mat-icon>{{column.attr}}</mat-icon>
+            </button>
+          </ng-container>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

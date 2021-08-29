@@ -1,0 +1,248 @@
+<mat-tab-group mat-align-tabs="start">
+  <ng-container *ngFor="let module of modules">
+    <ng-container *ngIf="module.type === 'banner'">
+      <mat-tab label="Banner">
+        <div class="actions">
+          <button mat-raised-button color="primary" (click)="saveBannerModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-banner">
+          <div class="preview-devices">
+            <ng-container *ngFor="let device of listDevices">
+              <div [class]="device">
+                <div class="content">
+                  <img [src]="module.backgroundImage">
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <div class="edit-image">
+            <mat-form-field>
+              <ngx-mat-file-input [(ngModel)]="module.file" placeholder="Selecione uma imagem" accept="image/*"
+                (change)="uploadImage(module.file, module, 'backgroundImage')"></ngx-mat-file-input>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
+    <ng-container *ngIf="module.type === 'text'">
+      <mat-tab [label]="module.title || ''">
+        <div class="actions">
+          <mat-form-field class="title-input">
+            <mat-label>Nome do Module</mat-label>
+            <input matInput name="nome-modulo" [(ngModel)]="module.title">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="saveTextModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-text">
+          <div class="file-image">
+            <img [src]="module.image">
+          </div>
+          <div class="edit-form">
+            <mat-form-field>
+              <ngx-mat-file-input [(ngModel)]="module.file" placeholder="Selecione uma imagem" accept="image/*"
+                (change)="uploadImage(module.file, module, 'image')"></ngx-mat-file-input>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-area">
+              <mat-label>Texto Principal</mat-label>
+              <textarea matInput name="texto-principal" rows="5" [(ngModel)]="module.text"></textarea>
+            </mat-form-field>
+            <div class="subs" *ngFor="let sub of module.subs; let index=index;">
+              <div class="inputs">
+                <mat-form-field appearance="fill" class="text-input">
+                  <mat-label>Sub-Titulo</mat-label>
+                  <input matInput name="sub-titulo" [(ngModel)]="sub.title">
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="text-area">
+                  <mat-label>Sub-Texto</mat-label>
+                  <textarea matInput name="sub-texto" rows="5" [(ngModel)]="sub.text"></textarea>
+                </mat-form-field>
+              </div>
+              <button mat-button color="warn" (click)="module.subs.splice(index, 1)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+            <div class="add">
+              <button mat-raised-button color="primary" (click)="module.subs.push({title:'',text:''})">
+                <mat-icon>add</mat-icon> Adicionar Sub
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
+    <ng-container *ngIf="module.type === 'products'">
+      <mat-tab [label]="module.title || ''">
+        <div class="actions">
+          <mat-form-field class="title-input">
+            <mat-label>Nome do Module</mat-label>
+            <input matInput name="nome-modulo" [(ngModel)]="module.title">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="saveProdutsModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-products">
+          <div class="item" *ngFor="let item of module.list; let index=index;">
+            <div class="image">
+              <img [src]="item.image">
+            </div>
+            <div class="inputs">
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Nome</mat-label>
+                <input matInput name="nome" [(ngModel)]="item.name">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Descrição</mat-label>
+                <input matInput name="descricao" [(ngModel)]="item.desc">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Preço</mat-label>
+                <input matInput type="number" name="preco" [(ngModel)]="item.price">
+              </mat-form-field>
+              <mat-form-field>
+                <ngx-mat-file-input [(ngModel)]="item.file" placeholder="Selecione uma imagem" accept="image/*"
+                  (change)="uploadImage(item.file, item, 'image')"></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+              </mat-form-field>
+            </div>
+            <button mat-button color="warn" (click)="module.list.splice(index, 1)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <div class="add">
+            <button mat-raised-button color="primary" (click)="module.list.push({title:'',desc:'',price:0,image:''})">
+              <mat-icon>add</mat-icon> Adicionar Item
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
+    <ng-container *ngIf="module.type === 'images'">
+      <mat-tab [label]="module.title || ''">
+        <div class="actions">
+          <mat-form-field class="title-input">
+            <mat-label>Nome do Module</mat-label>
+            <input matInput name="nome-modulo" [(ngModel)]="module.title">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="saveImageModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-images">
+          <div class="item" *ngFor="let item of module.images; let index=index;">
+            <div class="image">
+              <img [src]="item.src">
+            </div>
+            <div class="inputs">
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Nome</mat-label>
+                <input matInput name="nome" [(ngModel)]="item.name">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Link</mat-label>
+                <input matInput name="link" [(ngModel)]="item.link">
+              </mat-form-field>
+              <mat-form-field>
+                <ngx-mat-file-input [(ngModel)]="item.file" placeholder="Selecione uma imagem" accept="image/*"
+                  (change)="uploadImage(item.file, item, 'src')"></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+              </mat-form-field>
+            </div>
+            <button mat-button color="warn" (click)="module.images.splice(index, 1)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <div class="add">
+            <button mat-raised-button color="primary" (click)="module.images.push({name:'',link:'',src:''})">
+              <mat-icon>add</mat-icon> Adicionar Imagem
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
+    <ng-container *ngIf="module.type === 'posts'">
+      <mat-tab [label]="module.title || ''">
+        <div class="actions">
+          <mat-form-field class="title-input">
+            <mat-label>Nome do Module</mat-label>
+            <input matInput name="nome-modulo" [(ngModel)]="module.title">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="savePostModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-posts">
+          <div class="item" *ngFor="let item of module.posts; let index=index;">
+            <div class="posts">
+              <img class="logo" [src]="item.logo">
+              <img class="materia" [src]="item.image">
+            </div>
+            <div class="inputs">
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Nome da Revista</mat-label>
+                <input matInput name="jornal" [(ngModel)]="item.journal">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Materia</mat-label>
+                <input matInput name="materia" [(ngModel)]="item.title">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Link pra Materia</mat-label>
+                <input matInput name="link" [(ngModel)]="item.link">
+              </mat-form-field>
+              <mat-form-field>
+                <ngx-mat-file-input [(ngModel)]="item.logoFile" placeholder="Selecione o Logo da Revista"
+                  accept="image/*" (change)="uploadImage(item.logoFile, item, 'logo')"></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+              </mat-form-field>
+              <mat-form-field>
+                <ngx-mat-file-input [(ngModel)]="item.file" placeholder="Selecione uma imagem" accept="image/*"
+                  (change)="uploadImage(item.file, item, 'image')"></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+              </mat-form-field>
+            </div>
+            <button mat-button color="warn" (click)="module.posts.splice(index, 1)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <div class="add">
+            <button mat-raised-button color="primary"
+              (click)="module.posts.push({title:'',journal:'',link:'',logo:'',image:''})">
+              <mat-icon>add</mat-icon> Adicionar Materia
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
+    <ng-container *ngIf="module.type === 'feedbacks'">
+      <mat-tab [label]="module.title || ''">
+        <div class="actions">
+          <mat-form-field class="title-input">
+            <mat-label>Nome do Module</mat-label>
+            <input matInput name="nome-modulo" [(ngModel)]="module.title">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="saveFeedbackModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-feedbacks">
+          <div class="item" *ngFor="let item of module.users; let index=index;">
+            <div class="inputs">
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Nome do cliente</mat-label>
+                <input matInput name="cliente" [(ngModel)]="item.name">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="text-area">
+                <mat-label>Comentário</mat-label>
+                <textarea matInput name="comentario" rows="5" [(ngModel)]="item.comment"></textarea>
+              </mat-form-field>
+            </div>
+            <button mat-button color="warn" (click)="module.users.splice(index, 1)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <div class="add">
+            <button mat-raised-button color="primary"
+              (click)="module.users.push({name:'',comment:''})">
+              <mat-icon>add</mat-icon> Adicionar Feedback
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
+  </ng-container>
+</mat-tab-group>

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class HeaderService {
     public title: string = '';
     public actions: Array<any> = [];
@@ -9,27 +11,23 @@ export class HeaderService {
         '/home': 'Home',
         '/sites': 'Sites',
         '/pages': 'Pages',
+        '/configs': 'Configurações',
+        '/users': 'Usuarios',
     };
     public possibleActions: any = {
-        '/home': [{
-            icon: 'favorite',
-            function: () => console.log('favorite'),
-        }, {
-            icon: 'share',
-            function: () => console.log('share'),
-        }],
-        '/sites': [{
-            icon: 'share',
-            function: () => console.log('share'),
-        }, {
-            icon: 'favorite',
-            function: () => console.log('favorite'),
-        }],
+        '/home': [],
+        '/sites': [],
         '/pages': [],
+        '/users': [],
+        '/configs': [],
     };
 
     public setRoute(route: string) {
         this.title = this.possibleTitles[route] || '404';
         this.actions = this.possibleActions[route] || [];
+    }
+
+    public seHeaderTitle(title: string) {
+        this.title = title;
     }
 }

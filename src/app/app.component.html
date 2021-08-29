@@ -1,7 +1,7 @@
-<ng-container *ngIf="!isLogged">
+<ng-container *ngIf="!authService.isLogged">
     <router-outlet></router-outlet>
 </ng-container>
-<ng-container *ngIf="isLogged">
+<ng-container *ngIf="authService.isLogged">
     <app-header [title]="pageTitle" [actions]="pageActions"></app-header>
     <app-menu>
         <router-outlet></router-outlet>

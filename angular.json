@@ -74,6 +74,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "port": 63267,
             "browserTarget": "cms:build"
           },
           "configurations": {
