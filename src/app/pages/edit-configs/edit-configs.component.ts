@@ -15,7 +15,7 @@ import { StorageService } from 'src/app/services/storage.service';
 export class EditConfigsComponent implements OnInit {
 
   private siteId = 0;
-  public configs: Array<any> = [];
+  public configs: any = {};
   public networks: Array<string> = ['facebook','instagram','whatsapp','twitter','tiktok','youtube'];
 
   constructor(
