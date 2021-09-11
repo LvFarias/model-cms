@@ -9,8 +9,8 @@ export class PagesService {
         private api: ApiService,
     ) { }
 
-    public list(site: number, page: number, limit = 10): Promise<any> {
-        return this.api.get('pages/site/' + site, { page, limit });
+    public list(page: number, limit = 10): Promise<any> {
+        return this.api.get('pages', { page, limit });
     }
 
     public getById(id: number): Promise<any> {

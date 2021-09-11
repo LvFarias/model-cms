@@ -39,27 +39,17 @@ export class ConfigPagesComponent implements OnInit {
   ];
   public displayedColumns = this.columns.map(column => column.attr);
 
-  private currentSite = 0;
-
   constructor(
     private router: Router,
-    private storage: StorageService,
     private pagesService: PagesService,
-  ) {
-    const user = JSON.parse(this.storage.get('user') || '{}');
-    if (user.type !== 'admin') {
-      this.currentSite = parseInt(this.storage.get('currentSiteId') || '0');
-    } else {
-      this.currentSite = 1;
-    }
-  }
+  ) { }
 
   ngOnInit(): void {
     this.getList();
   }
 
   public getList() {
-    this.pagesService.list(this.currentSite, this.page).then(result => {
+    this.pagesService.list(this.page).then(result => {
       this.list = result.rows.map((row: any) => {
         row.siteName = row.Site.name;
         return row;

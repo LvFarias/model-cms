@@ -72,6 +72,103 @@
         </div>
       </mat-tab>
     </ng-container>
+    <ng-container *ngIf="module.type === 'title-subject-text'">
+      <mat-tab [label]="module.title || ''">
+        <div class="actions">
+          <mat-form-field class="title-input">
+            <mat-label>Nome do Module</mat-label>
+            <input matInput name="nome-modulo" [(ngModel)]="module.title">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="saveTextModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-text">
+          <div class="file-image">
+            <img [src]="module.image">
+          </div>
+          <div class="edit-form">
+            <mat-form-field>
+              <ngx-mat-file-input [(ngModel)]="module.file" placeholder="Selecione uma imagem" accept="image/*"
+                (change)="uploadImage(module.file, module, 'image')"></ngx-mat-file-input>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-input">
+              <mat-label>Titulo</mat-label>
+              <input matInput name="titulo" [(ngModel)]="module.title">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-input">
+              <mat-label>Assunto</mat-label>
+              <input matInput name="assunto" [(ngModel)]="module.subject">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-area">
+              <mat-label>Texto</mat-label>
+              <textarea matInput name="texto" rows="5" [(ngModel)]="module.text"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
+    <ng-container *ngIf="module.type === 'citation-image'">
+      <mat-tab [label]="module.title || ''">
+        <div class="actions">
+          <mat-form-field class="title-input">
+            <mat-label>Nome do Module</mat-label>
+            <input matInput name="nome-modulo" [(ngModel)]="module.title">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="saveTextModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-text">
+          <div class="file-image">
+            <img [src]="module.image">
+          </div>
+          <div class="edit-form">
+            <mat-form-field>
+              <ngx-mat-file-input [(ngModel)]="module.file" placeholder="Selecione uma imagem" accept="image/*"
+                (change)="uploadImage(module.file, module, 'image')"></ngx-mat-file-input>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-area">
+              <mat-label>Texto</mat-label>
+              <textarea matInput name="texto-principal" rows="5" [(ngModel)]="module.text"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-input">
+              <mat-label>Citação</mat-label>
+              <input matInput name="citacao" [(ngModel)]="module.citation">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
+    <ng-container *ngIf="module.type === 'post'">
+      <mat-tab [label]="module.title || ''">
+        <div class="actions">
+          <mat-form-field class="title-input">
+            <mat-label>Nome do Module</mat-label>
+            <input matInput name="nome-modulo" [(ngModel)]="module.title">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="saveTextModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-text">
+          <div class="file-image">
+            <img [src]="module.image">
+          </div>
+          <div class="edit-form">
+            <mat-form-field>
+              <ngx-mat-file-input [(ngModel)]="module.file" placeholder="Selecione uma imagem" accept="image/*"
+                (change)="uploadImage(module.file, module, 'image')"></ngx-mat-file-input>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-input">
+              <mat-label>Titulo da Materia</mat-label>
+              <input matInput name="materia" [(ngModel)]="module.headline">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-area">
+              <mat-label>Texto</mat-label>
+              <textarea matInput name="texto" rows="5" [(ngModel)]="module.text"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
     <ng-container *ngIf="module.type === 'products'">
       <mat-tab [label]="module.title || ''">
         <div class="actions">
@@ -94,6 +191,51 @@
               <mat-form-field appearance="fill" class="text-input">
                 <mat-label>Descrição</mat-label>
                 <input matInput name="descricao" [(ngModel)]="item.desc">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Preço</mat-label>
+                <input matInput type="number" name="preco" [(ngModel)]="item.price">
+              </mat-form-field>
+              <mat-form-field>
+                <ngx-mat-file-input [(ngModel)]="item.file" placeholder="Selecione uma imagem" accept="image/*"
+                  (change)="uploadImage(item.file, item, 'image')"></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+              </mat-form-field>
+            </div>
+            <button mat-button color="warn" (click)="module.list.splice(index, 1)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <div class="add">
+            <button mat-raised-button color="primary" (click)="module.list.push({title:'',desc:'',price:0,image:''})">
+              <mat-icon>add</mat-icon> Adicionar Item
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
+    <ng-container *ngIf="module.type === 'plans'">
+      <mat-tab [label]="module.title || ''">
+        <div class="actions">
+          <mat-form-field class="title-input">
+            <mat-label>Nome do Module</mat-label>
+            <input matInput name="nome-modulo" [(ngModel)]="module.title">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="saveProdutsModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-products">
+          <div class="item" *ngFor="let item of module.list; let index=index;">
+            <div class="image">
+              <img [src]="item.image">
+            </div>
+            <div class="inputs">
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Nome</mat-label>
+                <input matInput name="nome" [(ngModel)]="item.name">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="text-input">
+                <mat-label>Duração</mat-label>
+                <input matInput type="number" name="duracao" [(ngModel)]="item.duration">
               </mat-form-field>
               <mat-form-field appearance="fill" class="text-input">
                 <mat-label>Preço</mat-label>
@@ -206,6 +348,64 @@
               (click)="module.posts.push({title:'',journal:'',link:'',logo:'',image:''})">
               <mat-icon>add</mat-icon> Adicionar Materia
             </button>
+          </div>
+        </div>
+      </mat-tab>
+    </ng-container>
+    <ng-container *ngIf="module.type === 'form'">
+      <mat-tab [label]="module.title || ''">
+        <div class="actions">
+          <mat-form-field class="title-input">
+            <mat-label>Nome do Module</mat-label>
+            <input matInput name="nome-modulo" [(ngModel)]="module.title">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="saveTextModule(module)">Salvar Módulo</button>
+        </div>
+        <div class="module-text">
+          <div class="file-image">
+            <img [src]="module.image">
+          </div>
+          <div class="edit-form">
+            <mat-form-field>
+              <ngx-mat-file-input [(ngModel)]="module.file" placeholder="Selecione uma imagem" accept="image/*"
+                (change)="uploadImage(module.file, module, 'image')"></ngx-mat-file-input>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-area">
+              <mat-label>Email que irá receber</mat-label>
+              <input matInput name="email" [(ngModel)]="module.emailTo">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-area">
+              <mat-label>Assunto do email</mat-label>
+              <input matInput name="assunto" [(ngModel)]="module.emailSubject">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="text-area">
+              <mat-label>Texto do botão</mat-label>
+              <input matInput name="botao-texto" [(ngModel)]="module.buttonName">
+            </mat-form-field>
+            <div class="subs" *ngFor="let field of module.fields; let index=index;">
+              <div class="inputs">
+                <mat-form-field appearance="fill" class="text-input">
+                  <mat-label>Nome do campo</mat-label>
+                  <input matInput name="nome" [(ngModel)]="field.name">
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="select">
+                  <mat-label>Tipo do campo</mat-label>
+                  <mat-select [(ngModel)]="field.type">
+                    <mat-option *ngFor="let type of inputTypes" [value]="type.alias">{{type.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-checkbox [(ngModel)]="field.required">Este campo é obrigatório</mat-checkbox>
+              </div>
+              <button mat-button color="warn" (click)="module.fields.splice(index, 1)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+            <div class="add">
+              <button mat-raised-button color="primary" (click)="module.fields.push({name:'',type:'',required:false})">
+                <mat-icon>add</mat-icon> Adicionar Campo
+              </button>
+            </div>
           </div>
         </div>
       </mat-tab>

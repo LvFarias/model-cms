@@ -15,6 +15,14 @@ export class EditPagesComponent implements OnInit {
 
   private pageId = 0;
   public listDevices: Array<String> = ['desktop-frame', 'mobile-frame'];
+  public inputTypes: Array<any> = [
+    { alias: 'text', name: 'Normal' },
+    { alias: 'number', name: 'Numero' },
+    { alias: 'data', name: 'Data' },
+    { alias: 'email', name: 'Email' },
+    { alias: 'tel', name: 'Telefone' },
+    { alias: 'textarea', name: 'Texto' },
+  ];
   public modules: Array<any> = [];
 
   public imageForm: FormGroup = new FormGroup({
