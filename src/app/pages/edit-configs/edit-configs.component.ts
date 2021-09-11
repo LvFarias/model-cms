@@ -20,6 +20,7 @@ export class EditConfigsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private pagesService: PagesService,
     private sitesService: SitesService,
   ) {
     this.route.params.subscribe((params: any) => {
@@ -39,9 +40,15 @@ export class EditConfigsComponent implements OnInit {
   }
 
   public saveConfigs() {
-    this.sitesService.saveConfigs(this.siteId, this.configs).then(data => {
-      console.log(data);
-    })
+    const fileInput: FileInput = this.configs['file'];
+
+    this.pagesService.uploadImage(fileInput.files[0]).then(url => {
+      this.configs.logo = url;
+      delete this.configs.file;
+      this.sitesService.saveConfigs(this.siteId, this.configs).then(data => {
+        console.log(data);
+      })
+    });
   }
 
   public async uploadImage(fileImage: any, module: any, key: string) {
