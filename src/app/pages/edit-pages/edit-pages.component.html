@@ -3,7 +3,7 @@
     <ng-container *ngIf="module.type === 'banner'">
       <mat-tab label="Banner">
         <div class="actions">
-          <button mat-raised-button color="primary" (click)="saveBannerModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="saveGenericImageModule(module, 'backgroundImage')">Salvar Módulo</button>
         </div>
         <div class="module-banner">
           <div class="preview-devices">
@@ -32,7 +32,7 @@
             <mat-label>Nome do Module</mat-label>
             <input matInput name="nome-modulo" [(ngModel)]="module.title">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="saveTextModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="saveGenericImageModule(module)">Salvar Módulo</button>
         </div>
         <div class="module-text">
           <div class="file-image">
@@ -79,7 +79,7 @@
             <mat-label>Nome do Module</mat-label>
             <input matInput name="nome-modulo" [(ngModel)]="module.title">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="saveTextModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="saveGenericImageModule(module)">Salvar Módulo</button>
         </div>
         <div class="module-text">
           <div class="file-image">
@@ -114,7 +114,7 @@
             <mat-label>Nome do Module</mat-label>
             <input matInput name="nome-modulo" [(ngModel)]="module.title">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="saveTextModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="saveGenericImageModule(module)">Salvar Módulo</button>
         </div>
         <div class="module-text">
           <div class="file-image">
@@ -145,7 +145,7 @@
             <mat-label>Nome do Module</mat-label>
             <input matInput name="nome-modulo" [(ngModel)]="module.title">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="saveTextModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="saveGenericImageModule(module)">Salvar Módulo</button>
         </div>
         <div class="module-text">
           <div class="file-image">
@@ -176,7 +176,7 @@
             <mat-label>Nome do Module</mat-label>
             <input matInput name="nome-modulo" [(ngModel)]="module.title">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="saveProdutsModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="saveListModuleWithImage(module, 'list')">Salvar Módulo</button>
         </div>
         <div class="module-products">
           <div class="item" *ngFor="let item of module.list; let index=index;">
@@ -221,7 +221,7 @@
             <mat-label>Nome do Module</mat-label>
             <input matInput name="nome-modulo" [(ngModel)]="module.title">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="saveProdutsModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="saveListModuleWithImage(module, 'list')">Salvar Módulo</button>
         </div>
         <div class="module-products">
           <div class="item" *ngFor="let item of module.list; let index=index;">
@@ -266,7 +266,7 @@
             <mat-label>Nome do Module</mat-label>
             <input matInput name="nome-modulo" [(ngModel)]="module.title">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="saveImageModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="saveListModuleWithImage(module, 'images', 'src')">Salvar Módulo</button>
         </div>
         <div class="module-images">
           <div class="item" *ngFor="let item of module.images; let index=index;">
@@ -307,7 +307,7 @@
             <mat-label>Nome do Module</mat-label>
             <input matInput name="nome-modulo" [(ngModel)]="module.title">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="savePostModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="savePostsModule(module)">Salvar Módulo</button>
         </div>
         <div class="module-posts">
           <div class="item" *ngFor="let item of module.posts; let index=index;">
@@ -359,7 +359,7 @@
             <mat-label>Nome do Module</mat-label>
             <input matInput name="nome-modulo" [(ngModel)]="module.title">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="saveTextModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="saveGenericImageModule(module)">Salvar Módulo</button>
         </div>
         <div class="module-text">
           <div class="file-image">
@@ -417,7 +417,7 @@
             <mat-label>Nome do Module</mat-label>
             <input matInput name="nome-modulo" [(ngModel)]="module.title">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="saveFeedbackModule(module)">Salvar Módulo</button>
+          <button mat-raised-button color="primary" (click)="saveGenericModule(module)">Salvar Módulo</button>
         </div>
         <div class="module-feedbacks">
           <div class="item" *ngFor="let item of module.users; let index=index;">

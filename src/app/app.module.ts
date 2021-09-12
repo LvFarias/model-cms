@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { appRoutes } from './app.routing';
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { MyNotifications } from './helpers/alert';
 import { MaterialModule } from './material.module';
 import { ConfigPagesComponent } from './pages/config-pages/config-pages.component';
 import { ConfigSitesComponent } from './pages/config-sites/config-sites.component';
@@ -54,6 +55,7 @@ const services = [
   UsersService,
   SitesService,
   PagesService,
+  MyNotifications,
 ];
 
 

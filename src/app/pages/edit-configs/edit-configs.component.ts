@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FileInput } from 'ngx-material-file-input';
+import { MyNotifications } from 'src/app/helpers/alert';
 import { HeaderService } from 'src/app/services/header.service';
 import { PagesService } from 'src/app/services/pages.service';
 import { SitesService } from 'src/app/services/sites.service';
@@ -22,6 +23,7 @@ export class EditConfigsComponent implements OnInit {
     private route: ActivatedRoute,
     private pagesService: PagesService,
     private sitesService: SitesService,
+    private myNotifications: MyNotifications,
   ) {
     this.route.params.subscribe((params: any) => {
       this.siteId = params['id'];
@@ -46,7 +48,7 @@ export class EditConfigsComponent implements OnInit {
       this.configs.logo = url;
       delete this.configs.file;
       this.sitesService.saveConfigs(this.siteId, this.configs).then(data => {
-        console.log(data);
+        this.myNotifications.toast.fire('configurações salvas com sucesso', '', 'success');
       })
     });
   }

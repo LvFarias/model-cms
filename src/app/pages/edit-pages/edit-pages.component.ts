@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FileInput } from 'ngx-material-file-input';
+import { MyNotifications } from 'src/app/helpers/alert';
 import { HeaderService } from 'src/app/services/header.service';
 import { PagesService } from 'src/app/services/pages.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -34,6 +35,7 @@ export class EditPagesComponent implements OnInit {
     private storage: StorageService,
     private pagesService: PagesService,
     private headerService: HeaderService,
+		private myNotifications: MyNotifications,
   ) {
     this.route.params.subscribe((params: any) => {
       this.pageId = params['id'];
@@ -58,67 +60,39 @@ export class EditPagesComponent implements OnInit {
     module[key] = await this.toBase64(file.files[0]);
   }
 
-  public saveBannerModule(module: any) {
-    const fileInput: FileInput = module['file'];
-    this.pagesService.uploadImage(fileInput.files[0]).then(url => {
-      module.backgroundImage = url;
-      delete module['file'];
-      this.pagesService.editModule(module.id, module).then(res => {
-        console.log(res);
-      });
-    });
-  }
-
-  public saveTextModule(module: any) {
+  public async saveGenericImageModule(module: any, fileFinalKey: string = 'image') {
     const fileInput: FileInput = module['file'];
     if (!!fileInput) {
-      this.pagesService.uploadImage(fileInput.files[0]).then(url => {
-        module.image = url;
-        delete module['file'];
-        this.pagesService.editModule(module.id, module).then(res => {
-          console.log(res);
-        });
-      });
+      const url = await this.pagesService.uploadImage(fileInput.files[0]);
+      module[fileFinalKey] = url;
+      delete module['file'];
+      this.saveGenericModule(module);
     } else {
-      this.pagesService.editModule(module.id, module).then(res => {
-        console.log(res);
-      });
+      this.saveGenericModule(module);
     }
   }
 
-  public async saveProdutsModule(module: any) {
-    for (const i in module.list) {
-      const item = module.list[i];
-      const fileInput: FileInput = item['file'];
-      if (!!fileInput) {
-        const url = await this.pagesService.uploadImage(fileInput.files[0]);
-        module.list[i].image = url;
-        delete module.list[i]['file'];
-      }
-    }
-
+  public saveGenericModule(module: any) {
     this.pagesService.editModule(module.id, module).then(res => {
-      console.log(res);
+      this.myNotifications.toast.fire('Modulo salvo com sucesso', '', 'success');
     });
   }
 
-  public async saveImageModule(module: any) {
-    for (const i in module.images) {
-      const item = module.images[i];
+  public async saveListModuleWithImage(module: any, arrayKey: string, fileFinalKey: string = 'image') {
+    for (const i in module[arrayKey]) {
+      const item = module[arrayKey][i];
       const fileInput: FileInput = item['file'];
       if (!!fileInput) {
         const url = await this.pagesService.uploadImage(fileInput.files[0]);
-        module.images[i].src = url;
-        delete module.images[i]['file'];
+        module[arrayKey][i][fileFinalKey] = url;
+        delete module[arrayKey][i]['file'];
       }
     }
 
-    this.pagesService.editModule(module.id, module).then(res => {
-      console.log(res);
-    });
+    this.saveGenericModule(module);
   }
 
-  public async savePostModule(module: any) {
+  public async savePostsModule(module: any) {
     for (const i in module.posts) {
       const item = module.posts[i];
       const fileLogoInput: FileInput = item['logoFile'];
@@ -135,15 +109,7 @@ export class EditPagesComponent implements OnInit {
       }
     }
 
-    this.pagesService.editModule(module.id, module).then(res => {
-      console.log(res);
-    });
-  }
-
-  public async saveFeedbackModule(module: any) {
-    this.pagesService.editModule(module.id, module).then(res => {
-      console.log(res);
-    });
+    this.saveGenericModule(module);
   }
 
   private toBase64(file: File): Promise<any> {
@@ -154,13 +120,4 @@ export class EditPagesComponent implements OnInit {
       reader.onerror = error => rej(error);
     });
   }
-
-  public editSite(user: any) {
-    console.log(user);
-  }
-
-  public removeSite(user: any) {
-    console.log(user);
-  }
-
 }
