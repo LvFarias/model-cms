@@ -50,7 +50,7 @@
       <mat-form-field appearance="fill" class="select">
         <mat-label>Redes</mat-label>
         <mat-select [(ngModel)]="social.network">
-          <mat-option *ngFor="let network of networks" [value]="network">{{network}}</mat-option>
+          <mat-option *ngFor="let network of networks" [value]="network.value">{{network.label}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill" class="text-input">

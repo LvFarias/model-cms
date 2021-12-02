@@ -17,7 +17,15 @@ export class EditConfigsComponent implements OnInit {
 
   private siteId = 0;
   public configs: any = {};
-  public networks: Array<string> = ['facebook','instagram','whatsapp','twitter','tiktok','youtube'];
+  public networks: Array<any> = [
+    { value: 'facebook', label: 'Facebook' },
+    { value: 'instagram', label: 'Instagram' },
+    { value: 'whatsapp', label: 'Whatsapp' },
+    { value: 'twitter', label: 'Twitter' },
+    { value: 'tiktok', label: 'Tiktok' },
+    { value: 'youtube', label: 'Youtube' },
+    { value: 'envelope', label: 'Email' },
+  ];
 
   constructor(
     private route: ActivatedRoute,
